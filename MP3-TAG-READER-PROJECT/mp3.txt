@@ -1,0 +1,154 @@
+Name:Nandan Kumar T
+Date:26/10/2025
+Description:MP3 Tag Reader & Editor – Documentation*/
+
+/* Overview
+
+The MP3 Tag Reader and Editor is a software tool that can read, display, and modify MP3 metadata (ID3 tags). It helps organize music collections by keeping metadata accurate and consistent.
+
+ Understanding ID3 Tags
+
+ID3 is metadata embedded in MP3 files. It stores information such as:
+
+* Title
+* Artist
+* Album
+* Track number
+* Year
+* Genre
+* Comments
+
+There are two main types of ID3 tags:
+
+* ID3v1 – Older standard (128 bytes)
+* ID3v2 – Modern standard with more features (versions v2.2, v2.3, v2.4)
+
+---
+
+ID3v1 Structure
+
+| Field   | Bytes | Description       |
+| ------- | ----- | ----------------- |
+| Title   | 30    | Song title        |
+| Artist  | 30    | Artist name       |
+| Album   | 30    | Album name        |
+| Year    | 4     | Year of release   |
+| Comment | 30    | Optional comments |
+| Genre   | 1     | Genre code        |
+| Total   | 128   | Marked by "TAG"   |
+
+Versions: ID3v1.0, ID3v1.1
+
+---
+
+ ID3v2 Overview
+
+* v2.2: 3-byte frame IDs
+* v2.3: 4-byte frame IDs
+* v2.4: Improved frame handling
+
+Header components:
+
+| Component       | Description        |
+| --------------- | ------------------ |
+| File Identifier | "ID3" (10 bytes)   |
+| Version         | v2.x               |
+| Flags           | 2 bytes            |
+| Size            | 4 bytes (tag size) |
+
+Frame examples:
+
+* v2.2: TAL (Album), TOA (Original Artist), TT1 (Content Title)
+* v2.3/v2.4: TALB (Album), TIT2 (Title), TPE1 (Artist), TYER (Year)
+
+---
+
+ Core Features
+
+1. Help – Provides usage instructions and commands
+2. View/Read – Displays ID3 metadata from MP3 files
+3. Edit – Modify and save tags
+4. Error Handling – Checks invalid or unsupported files
+
+---
+ Implementation
+
+The system can:
+
+* Read tags – Extract ID3v1 and ID3v2 metadata
+* Edit tags – Modify and save metadata changes
+* Handle errors – Detect corrupted or unsupported files
+
+---
+
+ Advantages
+
+* Organizes music libraries
+* Improves search and sorting in media players
+* Keeps metadata consistent
+* Useful for music professionals
+* Helps with music discovery
+
+---
+
+ Application Features
+
+* Tag editing
+* Batch editing
+* Tag formatting
+* Album art management
+* Metadata lookup from online databases
+
+---
+
+Conclusion
+
+The MP3 Tag Reader & Editor is a complete solution for managing MP3 metadata, helping organize music libraries for personal or professional use.
+
+---
+
+Usage
+View Tags:
+./a.out -v song.mp3
+
+Edit Tags:
+./a.out -e -t "Perfect" song.mp3
+
+Sample Output:
+
+./a.out -v sample.mp3
+
+It is a Mp3 file
+
+==============================> MP3 TAG VIEW <====================================
+
+Title                :  Sunny Sunny - Yo Yo Honey Singh - [SongsPk.CC]
+Artist               :  Yo Yo Honey Singh - [SongsPk.CC]
+Album                :  Yaariyan
+Year                 :  2013
+Content Type         :  Bollywood Music - [SongsPk.CC]
+Comment              :  eng
+Attached Picture     :  image/jpeg
+
+=================================================================================
+
+./a.out -e -y 2025  sample.mp3
+changed TYER :2025
+Coping the remaining data...
+TAG edited successfully
+
+./a.out -v sample.mp3
+
+It is a Mp3 file
+
+==============================> MP3 TAG VIEW <====================================
+
+Title                :  Sunny Sunny - Yo Yo Honey Singh - [SongsPk.CC]
+Artist               :  Yo Yo Honey Singh - [SongsPk.CC]
+Album                :  Yaariyan
+Year                 :  2025
+Content Type         :  Bollywood Music - [SongsPk.CC]
+Comment              :  eng
+Attached Picture     :  image/jpeg
+
+=================================================================================
